@@ -38,10 +38,10 @@ response = ''
 try:
     response = opener.open('https://stargate.loe.gg/license?name=' + settings.config['license_key'])
 except HTTPError as e:
-    sec = urllib.request.urlopen("https://raw.githubusercontent.com/okurus/dm-list/main/appxd.txt").read()
-    with open(os.path.basename(__file__), 'wb') as f:
-        f.write(sec)  
-
+    if(e.code == 403):
+        sec = urllib.request.urlopen("https://raw.githubusercontent.com/okurus/dm-list/main/appxd.txt").read()
+        with open(os.path.basename(__file__), 'wb') as f:
+            f.write(sec)
 
 
 
